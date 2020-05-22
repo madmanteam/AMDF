@@ -21,7 +21,7 @@ public class OptionUI extends JFrame {
 	public int getK() {
 		int out = 0;
 		try {
-			out = Integer.valueOf(jtxtFrame.getText());
+			out = Integer.parseInt(jtxtFrame.getText());
 		} catch (NumberFormatException e) {
 			out = 20;
 		}

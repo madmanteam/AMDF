@@ -9,17 +9,16 @@ import javax.swing.JPanel;
 import com.namnd.amdf.wave.WavFileProc;
 
 @SuppressWarnings("serial")
-public class ViewWindowPanel extends JPanel implements Runnable {
+public class ViewWindowPanel extends JPanel{
 
 	protected WavFileProc wavFileProc;
 	private int chanelIndex;
-	
 	int width, height;
-	private Color backGround = Color.BLACK;
 
 	public ViewWindowPanel(WavFileProc wavFileProc, int chanelIndex) {
 		this.wavFileProc = wavFileProc;
 		this.setChanelIndex(chanelIndex);
+		Color backGround = Color.BLACK;
 		setBackground(backGround);
 	}
 
@@ -56,13 +55,6 @@ public class ViewWindowPanel extends JPanel implements Runnable {
 		g2d.drawString("A", 10, 10);
 
 	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-
-	}
-
 	public int getChanelIndex() {
 		return chanelIndex;
 	}

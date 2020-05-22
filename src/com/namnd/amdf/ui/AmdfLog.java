@@ -17,10 +17,8 @@ import javax.swing.LayoutStyle;
 import com.namnd.amdf.utils.NUtils;
 
 @SuppressWarnings("serial")
-public class AmdfLog extends JFrame implements ActionListener {
+public final class AmdfLog extends JFrame implements ActionListener {
 
-	private JButton jButton1;
-	private JScrollPane jScrollPane1;
 	private JTextArea txtLog;
 	public static AmdfLog appLog;
 
@@ -40,9 +38,9 @@ public class AmdfLog extends JFrame implements ActionListener {
 
 	private void initComponents() {
 
-		jScrollPane1 = new JScrollPane();
+		JScrollPane jScrollPane1 = new JScrollPane();
 		txtLog = new JTextArea();
-		jButton1 = new JButton();
+		JButton jButton1 = new JButton();
 
 		jScrollPane1.setViewportView(txtLog);
 
@@ -95,7 +93,6 @@ public class AmdfLog extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		StringSelection strSelect = new StringSelection(txtLog.getText());
-		Clipboard clbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
-		clbrd.setContents(strSelect, strSelect);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(strSelect, strSelect);
 	}
 }

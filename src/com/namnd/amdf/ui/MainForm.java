@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
@@ -86,13 +87,13 @@ public class MainForm extends JFrame implements ActionListener {
 		mnFile.setMnemonic(KeyEvent.VK_F);
 		miOpen = new JMenuItem("Open...", KeyEvent.VK_O);
 		miOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,
-				ActionEvent.CTRL_MASK));
+				InputEvent.CTRL_MASK));
 		miOptions = new JMenuItem("Options", KeyEvent.VK_P);
 		miOptions.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P,
-				ActionEvent.CTRL_MASK));
+				InputEvent.CTRL_MASK));
 		miExit = new JMenuItem("Exit", KeyEvent.VK_X);
 		miExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,
-				ActionEvent.ALT_MASK));
+				InputEvent.ALT_MASK));
 		mnFile.add(miOpen);
 		mnFile.add(miOptions);
 		miOptions.addActionListener(this);
@@ -178,10 +179,10 @@ public class MainForm extends JFrame implements ActionListener {
 		wavePanel.setAudioDisplay();
 		panelWav.removeAll();
 		panelWav.add(wavePanel, BorderLayout.CENTER);
-		miPreview.setEnabled(file != null);
-		miWavInfo.setEnabled(file != null);
-		miStart.setEnabled(file != null);
-		miReset.setEnabled(file != null);
+		miPreview.setEnabled(true);
+		miWavInfo.setEnabled(true);
+		miStart.setEnabled(true);
+		miReset.setEnabled(true);
 		mStart = false;
 		miStart.setText("Start");
 		this.wavInfo = wavePanel.getWavInfo();
@@ -239,12 +240,10 @@ public class MainForm extends JFrame implements ActionListener {
 				(new Thread(wavePanel.getWavePanel().get(0))).start();
 				mStart = true;
 				miStart.setText("Pause");
-				return;
 			} else {
 				mStart = false;
 				wavePanel.getWavePanel().get(0).setStop(true);
 				miStart.setText("Start");
-				return;
 			}
 		} else if (object.equals(miReset)) {
 			wavePanel.getWavePanel().get(0).reset();

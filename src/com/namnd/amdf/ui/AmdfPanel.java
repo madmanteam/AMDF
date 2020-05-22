@@ -12,15 +12,15 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 @SuppressWarnings("serial")
-public class AmdfPanel extends JSplitPane {
+public final class AmdfPanel extends JSplitPane {
 
 	int[] samples;
-	private Color backGround = Color.BLACK;
+	private final Color backGround = Color.BLACK;
 	int pointX = 40;
 	double maxSecond;
 	int frameLength;
 	int maxOff, minOff;
-	private Color drawColor;
+	private final Color drawColor;
 	FrameWindow amdfWindow;
 	DkWindow dkWindow;
 	F0Window f0Window;
@@ -87,8 +87,8 @@ public class AmdfPanel extends JSplitPane {
 
 	public int getMaxOff() {
 		int max = samples[0];
-		int leng = samples.length;
-		for (int i = 1; i < leng; i++) {
+		int length = samples.length;
+		for (int i = 1; i < length; i++) {
 			if (samples[i] > max) {
 				max = samples[i];
 			}
@@ -99,8 +99,8 @@ public class AmdfPanel extends JSplitPane {
 	// lay gia tri nho nhat
 	public int getMinOff() {
 		int min = samples[0];
-		int leng = samples.length;
-		for (int i = 1; i < leng; i++) {
+		int length = samples.length;
+		for (int i = 1; i < length; i++) {
 			if (samples[i] < min) {
 				min = samples[i];
 			}
@@ -176,8 +176,8 @@ public class AmdfPanel extends JSplitPane {
 		}
 
 		public int getDkMinPosition() {
-			List<Integer> ilist = new ArrayList<Integer>();
-			List<Integer> iIndex = new ArrayList<Integer>();
+			List<Integer> ilist = new ArrayList<>();
+			List<Integer> iIndex = new ArrayList<>();
 			for (int i = 2; i < frameLength - 2; i++) {
 				if ((dk()[i] < dk()[i + 1]) && (dk()[i] < dk()[i - 1])
 						&& (dk()[i] < dk()[i + 2]) && (dk()[i] < dk()[i - 2])) {
@@ -191,8 +191,8 @@ public class AmdfPanel extends JSplitPane {
 			int minValues = ilist.get(0);
 			int index = iIndex.get(0);
 			for (int i = 1; i < ilist.size(); i++) {
-				int value = ilist.get(i).intValue();
-				int pos = iIndex.get(i).intValue();
+				int value = ilist.get(i);
+				int pos = iIndex.get(i);
 				if ((minValues > value) && (pos < (frameLength / 2))) {
 					minValues = value;
 					index = pos;
@@ -307,8 +307,8 @@ public class AmdfPanel extends JSplitPane {
 		double xStep;
 		int max = 250;
 		public F0Window() {
-			minValues = new ArrayList<Integer>();
-			listF0 = new ArrayList<Double>();
+			minValues = new ArrayList<>();
+			listF0 = new ArrayList<>();
 			setBackground(backGround);
 		}
 

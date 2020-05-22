@@ -1,4 +1,4 @@
-/**
+/*
  * <p>Copyright: Copyright (c) 2012</p>
  * @version 1.0
  */
@@ -20,8 +20,7 @@ import com.namnd.amdf.wave.WavInfo;
 
 /**
  * @author namnd
- * @mobile 0986001325
- * @email: dinhnam.yt@gmail.com
+ * @email: namnd.bka@gmail.com
  * @Date: Thursday, October 11, 2012
  */
 @SuppressWarnings("serial")
@@ -32,21 +31,21 @@ public class WavePanel extends JPanel {
 	 */
 	public static final String TAG = "WavPanel";
 
-	private List<SingleWavePanel> singleChanalWaveForm;
-	private List<AmdfPanel> amdfPanelList;
+	private List<SingleWavePanel> singleChannelWaveForm;
+	private final List<AmdfPanel> amdfPanelList;
 	private WavFileProc wavFileProc = null;
 	File file;
 
 	public WavePanel(File file) {
 		this.file = file;
 		setLayout(new GridLayout(3, 1));
-		singleChanalWaveForm = new ArrayList<SingleWavePanel>();
-		amdfPanelList = new ArrayList<AmdfPanel>();
+		singleChannelWaveForm = new ArrayList<>();
+		amdfPanelList = new ArrayList<>();
 	}
 
 	public void setAudioDisplay() {
-		if (singleChanalWaveForm == null) {
-			singleChanalWaveForm = new ArrayList<SingleWavePanel>();
+		if (singleChannelWaveForm == null) {
+			singleChannelWaveForm = new ArrayList<SingleWavePanel>();
 		}
 		wavFileProc = new WavFileProc(file);
 		for (int i = 0; i < wavFileProc.getWavInfo().getNumChanel(); i++) {
@@ -56,7 +55,7 @@ public class WavePanel extends JPanel {
 					waveFormPanel.getStartFrame(),
 					waveFormPanel.getFrameLength(),
 					waveFormPanel.getSampleRate());
-			singleChanalWaveForm.add(waveFormPanel);
+			singleChannelWaveForm.add(waveFormPanel);
 			amdfPanelList.add(amdfPanel);
 			add(createChanelDisplay(waveFormPanel, i));
 			add(createChanelAmdfDisplay(amdfPanel, "Amdf"));
@@ -66,7 +65,7 @@ public class WavePanel extends JPanel {
 
 	public void updateGUI() {
 		for (int i = 0; i < wavFileProc.getWavInfo().getNumChanel(); i++) {
-			SingleWavePanel waveFormPanel = singleChanalWaveForm.get(i);
+			SingleWavePanel waveFormPanel = singleChannelWaveForm.get(i);
 			AmdfPanel amdfPanel = amdfPanelList.get(i);
 			amdfPanel.setStartFrame(waveFormPanel.getStartFrame());
 			amdfPanel.setLength(waveFormPanel.getFrameLength());
@@ -75,7 +74,7 @@ public class WavePanel extends JPanel {
 	}
 
 	public List<SingleWavePanel> getWavePanel() {
-		return singleChanalWaveForm;
+		return singleChannelWaveForm;
 	}
 
 	public JComponent createChanelDisplay(SingleWavePanel waveForm, int index) {

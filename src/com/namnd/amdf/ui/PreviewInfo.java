@@ -26,13 +26,12 @@ import com.namnd.amdf.wave.WavInfo;
 public class PreviewInfo extends JFrame {
 
 	private static PreviewInfo previewInfo;
-	private String[] titles = new String[] { "Name", "Size(bytes)", "Value" };
 
 	/**
 	 * Singleton Display information of wav file
 	 * 
-	 * @param wavInfo
-	 * @return
+	 * @param wavInfo {@link WavInfo}
+	 * @return an instance of {@link PreviewInfo}
 	 */
 	public static PreviewInfo getInstance(WavInfo wavInfo) {
 		if (previewInfo == null) {
@@ -58,21 +57,22 @@ public class PreviewInfo extends JFrame {
 		this.setLocation(x, y);
 		setIconImage(NUtils.iconApp.getImage());
 		this.setAlwaysOnTop(true);
-		String[][] datas = new String[][] {
+		String[][] data = new String[][] {
 				{ "ChunkID", "4", wavInfo.getChunkID() },
 				{ "ChunkSize", "4", "" + wavInfo.getChunkSize() },
 				{ "Format", "4", wavInfo.getFormat() },
 				{ "SubChunk1ID", "4", wavInfo.getSubChunk1ID() },
 				{ "SubChunk1Size", "4", wavInfo.getSubChunk1Size() + "" },
 				{ "AudioFormat", "2", wavInfo.getAudioFormat() + "" },
-				{ "NumChanels", "2", "" + wavInfo.getNumChanel() },
+				{ "NumChannels", "2", "" + wavInfo.getNumChanel() },
 				{ "SampleRate", "4", wavInfo.getSampleRate() + "" },
 				{ "ByteRate", "4", wavInfo.getByteRate() + "" },
 				{ "BlockAlign", "2", wavInfo.getBlockAlign() + "" },
 				{ "BitPerSample", "2", wavInfo.getBitPerSample() + "" },
 				{ "SubChunk2ID", "4", wavInfo.getSubChunk2ID() },
 				{ "SubChunk2Size", "4", wavInfo.getSubChunk2Size() + "" } };
-		JTable table = new JTable(datas, titles);
+		String[] titles = new String[]{"Name", "Size(bytes)", "Value"};
+		JTable table = new JTable(data, titles);
 		JScrollPane scrollPane = new JScrollPane(table);
 		this.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		table.setFont(new Font("Arial", Font.PLAIN, 16));

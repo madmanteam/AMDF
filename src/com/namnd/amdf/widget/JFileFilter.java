@@ -1,4 +1,4 @@
-/**
+/*
  * <p>Copyright: Copyright (c) 2012</p>
  * @version 1.0
  */
@@ -9,8 +9,7 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 /**
  * @author namnd
- * @mobile 0986001325
- * @email: dinhnam.yt@gmail.com
+ * @email: namnd.bka@gmail.com
  * @Date: Thursday, October 11, 2012
  */
 class JFileFilter extends FileFilter {
@@ -22,11 +21,8 @@ class JFileFilter extends FileFilter {
 
 	public boolean accept(File file) {
 		String filename = file.getName();
-		if (filename.endsWith("." + filter)
-				|| filename.endsWith("." + filter.toUpperCase()))
-			return true;
-		else
-			return false;
+		return filename.endsWith("." + filter)
+				|| filename.endsWith("." + filter.toUpperCase());
 	}
 
 	public String getDescription() {

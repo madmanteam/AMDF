@@ -1,4 +1,4 @@
-/**
+/*
  * <p>Copyright: Copyright (c) 2012</p>
  * @version 1.0
  */
@@ -16,18 +16,15 @@ import com.namnd.amdf.wave.WavInfo;
 
 /**
  * @author namnd
- * @mobile 0986001325
- * @email: dinhnam.yt@gmail.com
+ * @email: namnd.bka@gmail.com
  * @Date: Thursday, October 11, 2012
  */
 @SuppressWarnings("serial")
 public class SingleWavePanel extends JPanel implements Runnable {
 
 	protected WavFileProc wavFileProc;
-	private int chanelIndex;
-
+	private final int chanelIndex;
 	private Color drawColor;
-	private Color backGround = Color.BLACK;
 	int width, height;
 	double xStep;
 	int length;
@@ -55,6 +52,7 @@ public class SingleWavePanel extends JPanel implements Runnable {
 		length = samples.length;
 		maxSecond = 1000.0 * ((double) length / sampleRate);
 		timeFrameLength = OptionUI.getInstance().getK();
+		Color backGround = Color.BLACK;
 		setBackground(backGround);
 	}
 
@@ -91,9 +89,8 @@ public class SingleWavePanel extends JPanel implements Runnable {
 			g2d.setColor(Color.DARK_GRAY);
 			g2d.drawLine(pointX + i * (width - 60) / count, 10, pointX + i
 					* (width - 60) / count, height - 20);
-			if (chanelIndex > 0)
-				continue;
-			else {
+			if (chanelIndex < 1)
+			{
 				g2d.setColor(Color.GRAY);
 				if (i % 4 == 0)
 					g2d.drawString("" + i * maxSecond / count, pointX - 10 + i
@@ -104,22 +101,18 @@ public class SingleWavePanel extends JPanel implements Runnable {
 		int countY = (int) ((max * yStep) / ((width - 60) / count)) + 1;
 		g2d.setColor(Color.DARK_GRAY);
 		for (int i = -countY; i < countY + 1; i++)
-			if (i == 0)
-				continue;
-			else {
-				g2d.draw(new Line2D.Double(20, lineHeight - i
-						* (max * yStep / countY), width, lineHeight - i
-						* (max * yStep / countY)));
+			if(i != 0){
+				double y1 = lineHeight - i * (max * yStep / countY);
+				g2d.draw(new Line2D.Double(20, y1, width, y1));
 				if (i != countY)
 					g2d.drawString("" + i * (max / countY), 5,
 							(int) (lineHeight - i * (max / countY) * yStep));
+				g2d.setColor(Color.WHITE);
+				g2d.drawString("" + max, 5, (int) (lineHeight - max * yStep));
+				g2d.drawString("" + min, 5, (int) (lineHeight - min * yStep));
+				// ve cua so
+				drawFrameWindow(g, xStep * getFrameLength());
 			}
-
-		g2d.setColor(Color.WHITE);
-		g2d.drawString("" + max, 5, (int) (lineHeight - max * yStep));
-		g2d.drawString("" + min, 5, (int) (lineHeight - min * yStep));
-		// ve cua so
-		drawFrameWindow(g, xStep * getFrameLength());
 	}
 
 	public int[] getSamples() {
@@ -135,8 +128,8 @@ public class SingleWavePanel extends JPanel implements Runnable {
 
 	public int getMaxOff() {
 		int max = samples[0];
-		int leng = samples.length;
-		for (int i = 1; i < leng; i++) {
+		int length = samples.length;
+		for (int i = 1; i < length; i++) {
 			if (samples[i] > max) {
 				max = samples[i];
 			}
@@ -159,7 +152,7 @@ public class SingleWavePanel extends JPanel implements Runnable {
 	/**
 	 * Ve cac truc toa do
 	 * 
-	 * @param g
+	 * @param g {@link Graphics}
 	 */
 	public void drawChart(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;

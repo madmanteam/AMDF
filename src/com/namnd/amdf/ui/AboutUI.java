@@ -1,4 +1,4 @@
-/**
+/*
  * <p>Copyright: Copyright (c) 2012</p>
  * @version 1.0
  */
@@ -17,20 +17,16 @@ import com.namnd.amdf.utils.NUtils;
 
 /**
  * @author namnd
- * @mobile 0986001325
- * @email: dinhnam.yt@gmail.com
+ * @email: namnd.bka@gmail.com
  * @Date: Thursday, October 11, 2012
  */
 @SuppressWarnings("serial")
 public class AboutUI extends JFrame {
 
-	private JLabel jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6,
-			jLabel7, jLabel8, jLabel9;
-	private JLabel logo;
-
-	private final String teacher = "PGS-TS: Trịnh Văn Loan.";
-	private final String nameInfo1 = "Nguyễn Đình Nam - 20073731.";
-	private final String nameInfo2 = "Nguyễn Minh Tùng - 2006xxxx.";
+	private static final String TEACHER = "PGS-TS: Trịnh Văn Loan.";
+	private static final String STUDENT1 = "Nguyễn Đình Nam - 20073731.";
+	private static final String STUDENT2 = "Nguyễn Minh Tùng - 2006xxxx.";
+	private static final String FONT_FAMILY = "Tahoma";
 	private static AboutUI aboutUI;
 
 	public static AboutUI getInstance() {
@@ -41,10 +37,6 @@ public class AboutUI extends JFrame {
 
 	private AboutUI() {
 		initComponents();
-	}
-
-	public void abc() {
-
 	}
 
 	private void initComponents() {
@@ -60,16 +52,16 @@ public class AboutUI extends JFrame {
 		this.setLocation(x, y);
 		setIconImage(NUtils.iconApp.getImage());
 		this.setAlwaysOnTop(true);
-		logo = new JLabel();
-		jLabel1 = new JLabel();
-		jLabel2 = new JLabel();
-		jLabel3 = new JLabel();
-		jLabel4 = new JLabel();
-		jLabel5 = new JLabel();
-		jLabel6 = new JLabel();
-		jLabel7 = new JLabel();
-		jLabel8 = new JLabel();
-		jLabel9 = new JLabel();
+		JLabel logo = new JLabel();
+		JLabel jLabel1 = new JLabel();
+		JLabel jLabel2 = new JLabel();
+		JLabel jLabel3 = new JLabel();
+		JLabel jLabel4 = new JLabel();
+		JLabel jLabel5 = new JLabel();
+		JLabel jLabel6 = new JLabel();
+		JLabel jLabel7 = new JLabel();
+		JLabel jLabel8 = new JLabel();
+		JLabel jLabel9 = new JLabel();
 
 		GroupLayout jPanel4Layout = new GroupLayout(logo);
 		logo.setLayout(jPanel4Layout);
@@ -78,32 +70,32 @@ public class AboutUI extends JFrame {
 		jPanel4Layout.setVerticalGroup(jPanel4Layout.createParallelGroup(
 				GroupLayout.Alignment.LEADING).addGap(0, 108, Short.MAX_VALUE));
 		logo.setIcon(NUtils.iconApp);
-		jLabel1.setFont(new Font("Tahoma", 1, 18)); // NOI18N
+		jLabel1.setFont(new Font(FONT_FAMILY, Font.BOLD, 18)); // NOI18N
 		jLabel1.setText(NUtils.APP_NAME);
 
-		jLabel2.setFont(new Font("Tahoma", 2, 12)); // NOI18N
+		jLabel2.setFont(new Font(FONT_FAMILY, Font.ITALIC, 12)); // NOI18N
 		jLabel2.setText("Version " + NUtils.APP_VERSION);
 
-		jLabel3.setFont(new Font("Tahoma", 2, 12)); // NOI18N
+		jLabel3.setFont(new Font(FONT_FAMILY, Font.ITALIC, 12)); // NOI18N
 		jLabel3.setText("Coypyright (c) 2012");
 
-		jLabel4.setFont(new Font("Tahoma", 1, 12)); // NOI18N
-		jLabel4.setText(nameInfo1);
+		jLabel4.setFont(new Font(FONT_FAMILY, Font.BOLD, 12)); // NOI18N
+		jLabel4.setText(STUDENT1);
 
-		jLabel5.setFont(new Font("Tahoma", 1, 12)); // NOI18N
-		jLabel5.setText(nameInfo2);
+		jLabel5.setFont(new Font(FONT_FAMILY, Font.BOLD, 12)); // NOI18N
+		jLabel5.setText(STUDENT2);
 
-		jLabel6.setFont(new Font("Tahoma", 0, 12)); // NOI18N
+		jLabel6.setFont(new Font(FONT_FAMILY, Font.PLAIN, 12)); // NOI18N
 		jLabel6.setText("Thầy giáo hướng dẫn:");
 
-		jLabel7.setFont(new Font("Tahoma", 0, 12)); // NOI18N
+		jLabel7.setFont(new Font(FONT_FAMILY, Font.PLAIN, 12)); // NOI18N
 		jLabel7.setText("Nhóm SV:");
 
-		jLabel8.setFont(new Font("Tahoma", 1, 12)); // NOI18N
+		jLabel8.setFont(new Font(FONT_FAMILY, Font.BOLD, 12)); // NOI18N
 		jLabel8.setText("Lớp Kỹ Thuật Máy Tính - K52");
 
-		jLabel9.setFont(new Font("Tahoma", 1, 13)); // NOI18N
-		jLabel9.setText(teacher);
+		jLabel9.setFont(new Font(FONT_FAMILY, Font.BOLD, 13)); // NOI18N
+		jLabel9.setText(TEACHER);
 
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);

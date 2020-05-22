@@ -1,4 +1,4 @@
-/**
+/*
  * <p>Copyright: Copyright (c) 2012</p>
  * @version 1.0
  */
@@ -14,8 +14,7 @@ import com.namnd.amdf.ui.MainForm;
 
 /**
  * @author namnd
- * @mobile 0986001325
- * @email: dinhnam.yt@gmail.com
+ * @email: namnd.bka@gmail.com
  * @Date: Thursday, October 11, 2012
  */
 @SuppressWarnings("serial")
@@ -34,12 +33,9 @@ public class OpenFileDlg extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		chooser.setFileFilter(new JFileFilter("wav"));
 		int resuft = chooser.showOpenDialog(context);
-
 		File file = chooser.getSelectedFile();
-
 		if (resuft == JFileChooser.APPROVE_OPTION) {
 			context.show(file);
 		}
-
 	}
 }

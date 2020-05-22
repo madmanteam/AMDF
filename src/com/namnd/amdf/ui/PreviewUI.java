@@ -1,4 +1,4 @@
-/**
+/*
  * <p>Copyright: Copyright (c) 2012</p>
  * @version 1.0
  */
@@ -13,8 +13,7 @@ import com.namnd.amdf.utils.NUtils;
 
 /**
  * @author namnd
- * @mobile 0986001325
- * @email: dinhnam.yt@gmail.com
+ * @email: namnd.bka@gmail.com
  * @Date: Thursday, October 11, 2012
  */
 @SuppressWarnings("serial")
@@ -25,8 +24,8 @@ public class PreviewUI extends JFrame {
 	/**
 	 * Singleton
 	 * 
-	 * @param file
-	 * @return
+	 * @param file {@link File}
+	 * @return an instance of {@link PreviewUI}
 	 */
 	public static PreviewUI getInstance(File file) {
 		if (previewUI == null)
